@@ -45,6 +45,14 @@
                         .bindPopup((layer) => layer.feature.properties.P05_003) // ポップアップで市町村役場や公的集会施設の名前を表示
                         .addTo(map);
                 });
+            fetch('./P29-21_27.geojson') // 群馬県の学校データのGeoJSONを非同期読み込み
+                .then((res) => res.json())
+                .then((json) => {
+                    // GeoJSONレイヤーを作成
+                    L.geoJSON(json)
+                        .bindPopup((layer) => layer.feature.properties.P29_004) // ポップアップで学校の名前を表示
+                        .addTo(map);
+                });
         </script>
     </body>
 </html>
